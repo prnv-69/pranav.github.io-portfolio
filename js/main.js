@@ -39,3 +39,13 @@ window.onload = () => {
 };
 
 window.addEventListener("scroll", reveal);
+
+// SERVICES CARD TOGGLE
+const serviceCards = document.querySelectorAll(".service-card");
+
+serviceCards.forEach(card => {
+  card.addEventListener("click", () => {
+    serviceCards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+  });
+});
