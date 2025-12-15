@@ -1,10 +1,7 @@
-// ================= YEAR =================
-const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+// YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
 
-// ================= TYPEWRITER =================
+// TYPEWRITER
 const roles = [
   "Video Editor",
   "Reel Specialist",
@@ -12,59 +9,33 @@ const roles = [
   "Short-Form Killer"
 ];
 
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingSpeed = 120;
-const deletingSpeed = 70;
-const delayBetweenRoles = 1400;
+let i = 0, j = 0, del = false;
+const type = document.getElementById("typewriter");
 
-const typewriter = document.getElementById("typewriter");
+function loop() {
+  const word = roles[i];
+  type.textContent = del
+    ? word.substring(0, j--)
+    : word.substring(0, j++);
 
-function typeLoop() {
-  if (!typewriter) return;
+  if (!del && j === word.length + 1) setTimeout(() => del = true, 1200);
+  if (del && j === 0) { del = false; i = (i + 1) % roles.length; }
 
-  const current = roles[roleIndex];
-
-  if (!isDeleting) {
-    typewriter.textContent = current.substring(0, charIndex + 1);
-    charIndex++;
-
-    if (charIndex === current.length) {
-      setTimeout(() => (isDeleting = true), delayBetweenRoles);
-    }
-  } else {
-    typewriter.textContent = current.substring(0, charIndex - 1);
-    charIndex--;
-
-    if (charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
-  }
-
-  setTimeout(typeLoop, isDeleting ? deletingSpeed : typingSpeed);
+  setTimeout(loop, del ? 60 : 120);
 }
 
-// ================= SCROLL REVEAL =================
-function revealOnScroll() {
-  const reveals = document.querySelectorAll(".reveal");
-
-  reveals.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = 120;
-
-    if (elementTop < windowHeight - revealPoint) {
+// REVEAL
+function reveal() {
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
       el.classList.add("active");
     }
   });
 }
 
-// ================= INIT =================
-window.addEventListener("load", () => {
-  typeLoop();
-  revealOnScroll();
-});
+window.onload = () => {
+  loop();
+  reveal();
+};
 
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll", reveal);
