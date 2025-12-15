@@ -49,3 +49,13 @@ serviceCards.forEach(card => {
     card.classList.add("active");
   });
 });
+
+// EXPERIENCE CARD TOGGLE
+const experienceCards = document.querySelectorAll(".experience-card");
+
+experienceCards.forEach(card => {
+  card.addEventListener("click", () => {
+    experienceCards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+  });
+});
