@@ -118,3 +118,22 @@ nav a:hover { color: #6a4efc; }
     text-align: center;
   }
 }
+
+/* SERVICE CARD TOGGLE */
+.service-card {
+  cursor: pointer;
+}
+
+.service-card p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition: all 0.4s ease;
+}
+
+.service-card.active p {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.8rem;
+}
