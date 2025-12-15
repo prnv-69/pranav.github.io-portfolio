@@ -1,9 +1,10 @@
-// Set copyright year
+// ================= YEAR =================
 const yearEl = document.getElementById("year");
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
+// ================= TYPEWRITER =================
 const roles = [
   "Video Editor",
   "Reel Specialist",
@@ -42,28 +43,28 @@ function typeLoop() {
     }
   }
 
-  // Sync glitch text if using ::before / ::after
- typewriter.setAttribute("data-text", typewriter.textContent);
-
   setTimeout(typeLoop, isDeleting ? deletingSpeed : typingSpeed);
 }
 
-window.addEventListener("load", typeLoop);
-
-// Scroll reveal animation
-const reveals = document.querySelectorAll(".reveal");
-
+// ================= SCROLL REVEAL =================
 function revealOnScroll() {
-  reveals.forEach(section => {
-    const windowHeight = window.innerHeight;
-    const sectionTop = section.getBoundingClientRect().top;
-    const revealPoint = 100;
+  const reveals = document.querySelectorAll(".reveal");
 
-    if (sectionTop < windowHeight - revealPoint) {
-      section.classList.add("active");
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 120;
+
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add("active");
     }
   });
 }
 
+// ================= INIT =================
+window.addEventListener("load", () => {
+  typeLoop();
+  revealOnScroll();
+});
+
 window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
