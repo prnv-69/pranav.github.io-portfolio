@@ -4,11 +4,22 @@
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+}
 
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
+
+  /* LEGO STYLE BACKGROUND */
+  background-color: #f7f7fb;
+  background-image: radial-gradient(
+    circle at 10px 10px,
+    rgba(106, 78, 252, 0.15) 2px,
+    transparent 2.6px
+  );
+  background-size: 40px 40px;
 }
 
 .container {
@@ -17,11 +28,13 @@ body {
   padding: 0 1.5rem;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 .site-header {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: #ffffffee;
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid #eee;
   z-index: 99;
 }
@@ -40,9 +53,12 @@ nav a {
   color: #000;
 }
 
-nav a:hover { color: #6a4efc; }
+nav a:hover { 
+  color: #6a4efc; 
+}
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero {
   display: flex;
   justify-content: space-between;
@@ -55,9 +71,12 @@ nav a:hover { color: #6a4efc; }
   max-width: 100%;
 }
 
-.highlight { color: #6a4efc; }
+.highlight { 
+  color: #6a4efc; 
+}
 
-/* TYPEWRITER */
+/* ================= TYPEWRITER ================= */
+
 #typewriter {
   font-weight: 700;
   border-right: 3px solid #000;
@@ -66,10 +85,13 @@ nav a:hover { color: #6a4efc; }
 }
 
 @keyframes blink {
-  50% { border-color: transparent; }
+  50% { 
+    border-color: transparent; 
+  }
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
+
 .cta {
   display: inline-block;
   margin-top: 2rem;
@@ -78,9 +100,17 @@ nav a:hover { color: #6a4efc; }
   padding: 0.8rem 1.8rem;
   border-radius: 8px;
   text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* GRID */
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(106, 78, 252, 0.3);
+}
+
+/* ================= GRID ================= */
+
 .grid {
   display: grid;
   gap: 2rem;
@@ -92,15 +122,23 @@ nav a:hover { color: #6a4efc; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* CARD */
+/* ================= CARD ================= */
+
 .card {
   padding: 1.7rem;
   background: #fff;
   border-radius: 12px;
   border: 1px solid #eee;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* REVEAL */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= REVEAL ================= */
+
 .reveal {
   opacity: 1;
   transform: translateY(40px);
@@ -111,15 +149,8 @@ nav a:hover { color: #6a4efc; }
   transition: 0.8s ease;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+/* ================= SERVICE CARD TOGGLE ================= */
 
-/* SERVICE CARD TOGGLE */
 .service-card {
   cursor: pointer;
 }
@@ -138,7 +169,8 @@ nav a:hover { color: #6a4efc; }
   margin-top: 0.8rem;
 }
 
-/* EXPERIENCE CARD TOGGLE */
+/* ================= EXPERIENCE CARD TOGGLE ================= */
+
 .experience-card {
   cursor: pointer;
 }
@@ -155,4 +187,13 @@ nav a:hover { color: #6a4efc; }
   max-height: 200px;
   opacity: 1;
   margin-top: 0.8rem;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
 }
